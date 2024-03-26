@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Greeting Generator</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- <img src="logo.png" alt="Greeter Logo"> -->
+            <span class="site-name">Greeter</span>
+        </div>
+        <nav>
+            <button class="nav-button">History</button>
+            <button class="nav-button">Settings</button>
+            <button class="nav-button">Logout</button>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="greeting-input">
+            <label for="greeting-text">Describe your greeting:</label>
+            <input type="text" id="greeting-text" placeholder="Enter your greeting...">
+        </div>
+        <div class="hero-selection">
+			<h3 class="hero-label">Select a hero:</h3>
+            <!-- Replace with actual hero thumbnails -->
+            <div class="hero-thumbnail">
+                <img src="img/batman.jpeg" alt="Hero 1">
+            </div>
+            <div class="hero-thumbnail">
+                <img src="img/mickey_mouse.avif" alt="Hero 2">
+            </div>
+			<div class="hero-thumbnail">
+                <img src="img/santa.jpeg" alt="Hero 3">
+            </div>
+            <div class="hero-thumbnail">
+                <img src="img/wonder_woman.jpeg" alt="Hero 4">
+            </div>
+            <!-- Add more hero thumbnails as needed -->
+        </div>
+        <button class="generate-button">Generate</button>
+        <div class="media-player">
+            <img src="img/minimal-white-style-video-player-template-design_1017-25481.avif" alt="player placeholder">
+        </div>
+        <div class="share-save-buttons">
+            <button class="share-button">Share</button>
+            <button class="save-button">Save</button>
+        </div>
+    </main>
+</body>
+</html>

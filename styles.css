@@ -1,0 +1,114 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+.logo img {
+    width: 30px; /* Adjust logo size as needed */
+    height: auto;
+    margin-right: 10px;
+}
+
+.site-name {
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+}
+
+.nav-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.main {
+    padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.greeting-input {
+    margin-bottom: 20px;
+}
+
+#greeting-text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.hero-selection {
+    display: flex;
+    justify-content: center; /* Center the hero thumbnails horizontally */
+    align-items: center; /* Center the hero thumbnails vertically */
+}
+
+.hero-label {
+	flex-wrap: wrap;
+}
+
+.hero-thumbnail {
+    width: 100px; /* Set a fixed width for the hero thumbnails */
+    height: 100px; /* Make them square */
+    margin: 10px; /* Add some spacing between thumbnails */
+    overflow: hidden; /* Hide any overflow (e.g., if images are larger) */
+    border: 1px solid #ccc; /* Add a border for visual separation */
+}
+
+.hero-thumbnail img {
+    width: 100%; /* Make the image fill the thumbnail container */
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover; /* Crop or stretch the image to fit the container */
+}
+
+.generate-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.media-player {
+    /* Style media player (audio, video, or image) */
+}
+
+.share-save-buttons {
+    margin-top: 20px;
+}
+
+.share-button,
+.save-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
