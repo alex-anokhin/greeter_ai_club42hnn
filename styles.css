@@ -1,3 +1,6 @@
+:root {
+    --vph-width: 200px;
+  }
 /* Reset default margin and padding */
 * {
     margin: 0;
@@ -62,13 +65,22 @@ nav {
 }
 
 .hero-selection {
-    display: flex;
-    justify-content: center; /* Center the hero thumbnails horizontally */
-    align-items: center; /* Center the hero thumbnails vertically */
+     min-width: 90%;
+     margin: 0 auto;
 }
 
 .hero-label {
-	flex-wrap: wrap;
+	text-align: center;
+}
+
+.hero-container {
+    min-width: 251px;
+    height: auto;
+    display: flex;
+    /*flex-direction: row;*/
+    flex-wrap: wrap;
+    justify-content: center; /*Center the hero thumbnails horizontally*/
+    align-items: center;
 }
 
 .hero-thumbnail {
@@ -77,6 +89,7 @@ nav {
     margin: 10px; /* Add some spacing between thumbnails */
     overflow: hidden; /* Hide any overflow (e.g., if images are larger) */
     border: 1px solid #ccc; /* Add a border for visual separation */
+    flex: 0 0 auto;
 }
 
 .hero-thumbnail img {
@@ -95,9 +108,19 @@ nav {
 }
 
 .media-player {
-    /* Style media player (audio, video, or image) */
+    /*text-align: center;*/
+    width: calc(var(--vph-width) * 1.6);
+    height: calc(var(--vph-width) * 0.9);
+    background-image: url('img/video-player-placeholder.avif');
+    background-size: cover; /* Crop and scale image to cover container */
+    background-position: center; /* Center image */
+    transform: scale(2); /* Scale image 1.5 times */
 }
-
+/*.video-placeholder {
+    height: auto;
+    max-width: 90%;
+    min-width: 240px;
+}*/
 .share-save-buttons {
     margin-top: 20px;
 }
