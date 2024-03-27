@@ -108,19 +108,19 @@ nav {
 }
 
 .media-player {
-    /*text-align: center;*/
-    width: calc(var(--vph-width) * 1.6);
+    text-align: center;
+    /*width: calc(var(--vph-width) * 1.6);
     height: calc(var(--vph-width) * 0.9);
     background-image: url('img/video-player-placeholder.avif');
     background-size: cover; /* Crop and scale image to cover container */
-    background-position: center; /* Center image */
-    transform: scale(2); /* Scale image 1.5 times */
+    /*background-position: center; /* Center image */
+    /*transform: scale(2); Scale image 1.5 times*/
 }
-/*.video-placeholder {
+.video-placeholder {
     height: auto;
     max-width: 90%;
     min-width: 240px;
-}*/
+}
 .share-save-buttons {
     margin-top: 20px;
 }
