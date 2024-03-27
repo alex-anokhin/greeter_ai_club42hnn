@@ -118,7 +118,7 @@ nav {
 }
 .video-placeholder {
     height: auto;
-    max-width: 90vw;
+    width: 90vw;
     min-width: 240px;
 }
 .share-save-buttons {
