@@ -1,0 +1,249 @@
+/* Общие стили */
+.logo {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.chosedContainer {
+    padding: 20px;
+    text-align: center;
+}
+
+.input {
+    width: 60%;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    padding: 8px;
+    border: 1px solid #333; 
+}
+
+.btn {
+    width: 48%;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Стили для картинки */
+.chosedHero {
+    border-radius: 50%;
+    width: 480px;
+    height: 480px;
+    margin-right: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Медиа-запросы для адаптивности */
+
+/* iPhone 12 и аналогичные устройства */
+@media only screen and (max-width: 1170px) {
+    .chosedHero {
+        width: 400px;
+        height: 400px;
+        margin-top: 40px;
+    }
+
+    .input-cont {
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    .input {
+        height: 24px;
+        font-size: 14px;
+        padding: 3px;
+        border: 2px solid #333;
+        margin-top: 18px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        font-size: 13px;
+        width: 48%;
+        height: 40px;
+        border-radius: 15px;
+    }
+}
+
+/* iPad Pro 12.9" и аналогичные устройства */
+@media only screen and (max-width: 2048px) {
+    .chosedHero {
+        width: 400px;
+        height: 400px;
+        margin-top: 40px;
+    }
+
+    .input-cont {
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    .input {
+        height: 24px;
+        font-size: 14px;
+        padding: 3px;
+        border: 2px solid #333;
+        margin-top: 18px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        font-size: 13px;
+        width: 48%;
+        height: 40px;
+        border-radius: 15px;
+    }
+}
+
+@media only screen and (min-width: 3840px) {
+    .chosedHero {
+        width: 960px;
+        height: 960px;
+    }
+
+    .input {
+        font-size: 20px;
+        padding: 10px;
+        border: 2px solid #333;
+    }
+
+    .btn {
+        font-size: 20px;
+        height: 60px;
+    }
+}
+
+/* Ноутбуки и десктопы */
+@media only screen and (max-width: 1440px) {
+    .logo {
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .chosedContainer {
+        padding: 0px;
+
+    }
+    .chosedHero {
+        width: 400px;
+        height: 400px;
+    }
+    .img-cont {
+        margin-top: 0px;
+    }
+    .input-cont {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .input {
+        height: 24px;
+        font-size: 14px;
+        padding: 3px;
+        border: 2px solid #333;
+        margin-top: 18px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        font-size: 13px;
+        width: 48%;
+        height: 40px;
+        border-radius: 15px;
+    }
+}
+
+@media only screen and (min-width: 3840px) {
+    .chosedHero {
+        width: 960px;
+        height: 960px;
+    }
+
+    .input {
+        font-size: 20px;
+        padding: 10px;
+        border: 2px solid #333;
+    }
+
+    .btn {
+        font-size: 20px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logo {
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .chosedHero {
+        margin-top: 40px;
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn {
+        height: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+ 
+    .chosedHero {
+        width: 250px;
+        height: 250px;
+    }
+
+    .input-cont{
+        margin-top: 30px;
+    }
+
+    .input {
+        font-size: 13px;
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 320px) {
+    .chosedContainer {
+        padding: 0px;
+    }
+
+    .chosedHero {
+        width: 240px;
+        height: 240px;
+    }
+
+    .img-cont{
+        margin-top: 60px;
+    }
+    .input-cont{
+        margin-top: 30px;
+    }
+}
+@media only screen and (min-width: 3840px) {
+    .chosedHero {
+        width: 960px;
+        height: 960px;
+    }
+
+    .input {
+        font-size: 20px;
+        padding: 10px;
+        border: 2px solid #333;
+    }
+
+    .btn {
+        font-size: 20px;
+        height: 60px;
+    }
+}
