@@ -1,137 +1,82 @@
-:root {
-  --vph-width: 200px;
-}
-/* Reset default margin and padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Basic styling */
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
 }
 
-header {
+.container {
+  width: 90%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
-}
-
-.logo img {
-  width: 30px; /* Adjust logo size as needed */
-  height: auto;
-  margin-right: 10px;
-}
-
-.site-name {
-  font-weight: bold;
-}
-
-nav {
-  display: flex;
-}
-
-.nav-button {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.main {
-  padding: 20px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-
-.greeting-input {
-  margin-bottom: 20px;
-}
-
-#greeting-text {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.hero-selection {
-   min-width: 90%;
-   margin: 0 auto;
-}
-
-.hero-label {
-text-align: center;
-}
-
-.hero-container {
-  min-width: 251px;
-  height: auto;
-  display: flex;
-  /*flex-direction: row;*/
   flex-wrap: wrap;
-  justify-content: center; /*Center the hero thumbnails horizontally*/
-  align-items: center;
+  padding: 0 20px;
+  justify-content: center;
 }
 
-.hero-thumbnail {
-  width: 100px; /* Set a fixed width for the hero thumbnails */
-  height: 100px; /* Make them square */
-  margin: 10px; /* Add some spacing between thumbnails */
-  overflow: hidden; /* Hide any overflow (e.g., if images are larger) */
-  border: 1px solid #ccc; /* Add a border for visual separation */
-  flex: 0 0 auto;
+.slide {
+  height: 80vh;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  color: #fff;
+  flex: 2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 500ms ease-in-out;
 }
 
-.hero-thumbnail img {
-  width: 100%; /* Make the image fill the thumbnail container */
-  height: 100%; /* Maintain aspect ratio */
-  object-fit: cover; /* Crop or stretch the image to fit the container */
+.slide h3 {
+  position: absolute;
+  font-size: 24px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
 }
 
-.generate-button {
-  background-color: #007bff;
+.slide.active {
+  flex: 10;
+}
+
+.slide.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  background: #333;
   color: #fff;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
+  margin: 20px 0;
 }
 
-.media-player {
-  text-align: center;
-  /*width: calc(var(--vph-width) * 1.6);
-  height: calc(var(--vph-width) * 0.9);
-  background-image: url('img/video-player-placeholder.avif');
-  background-size: cover; /* Crop and scale image to cover container */
-  /*background-position: center; /* Center image */
-  /*transform: scale(2); Scale image 1.5 times*/
-}
-.video-placeholder {
-  height: auto;
-  width: 90vw;
-  min-width: 240px;
-}
-.share-save-buttons {
-  margin-top: 20px;
+.btn:hover {
+  background: #30d303;
 }
 
-.share-button,
-.save-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
+@media (max-width: 768px) {
+  .slide {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 320px) {
+  .slide {
+    height: 30vh;
+  }
 }

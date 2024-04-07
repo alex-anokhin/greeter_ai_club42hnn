@@ -1,42 +1,23 @@
-import React, {useState} from 'react';
-import Header from './header';
-import GreetingInput from './GreetingInput';
-import HeroSelection from './HeroSelection';
-import GenerateButton from './GenerateButton';
-import MediaPlayer from './MediaPlayer';
-import ShareSaveButtons from './ShareSaveButtons';
-import './App.css';
 
-
+import React, { useState } from 'react';
+import Heroes from './Heroes';
+import FirstLayer from './First';
+import SwitchHero from './SwitchHero';
 
 function App() {
 
-  const [greeting, setGreting] = useState("");
-  const [prevInput, setPrevInput] = useState("");
-
-  const handleGreetingChange = (event) => {
-    setGreting(event.target.value);
-    setPrevInput(event.target.value);
+  const [approved, setApproved] = useState(false);
+  const [tmp, setTmp] = useState(Heroes[0].id);
+  const handleSelection = () => {
+    setApproved(true);
   };
 
-  const onGenerate = () => {
-    setGreting("");
-    console.log(prevInput)
-    setPrevInput("");
-  };
-
-  return (
-    <div className="app">
-      <Header />
-      <main className="main">
-        <GreetingInput  setGreting = {handleGreetingChange} value = {greeting} />
-        <HeroSelection />
-        <GenerateButton onClick={onGenerate} /> 
-        <MediaPlayer />
-        <ShareSaveButtons />
-      </main>
-    </div>
-  );
+    if (approved) {
+      return <FirstLayer id = {tmp}/>;
+    }
+    else {
+      return <SwitchHero onSelection={handleSelection} setTmp={setTmp}/>;
+    }
 }
 
 export default App;
