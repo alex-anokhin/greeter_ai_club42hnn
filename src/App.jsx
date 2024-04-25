@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import Header from './header';
+import Layout from './Layout/Layout';
 import GreetingInput from './GreetingInput';
 import HeroSelection from './HeroSelection';
 import GenerateButton from './GenerateButton';
 import MediaPlayer from './MediaPlayer';
 import ShareSaveButtons from './ShareSaveButtons';
 import './App.css';
-
-
 
 function App() {
 
@@ -26,16 +24,13 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Header />
-      <main className="main">
-        <GreetingInput  setGreting = {handleGreetingChange} value = {greeting} />
-        <HeroSelection />
-        <GenerateButton onClick={onGenerate} /> 
-        <MediaPlayer />
-        <ShareSaveButtons />
-      </main>
-    </div>
+    <Layout>
+      <GreetingInput  setGreting = {handleGreetingChange} value = {greeting} />
+      <HeroSelection />
+      <GenerateButton onClick={onGenerate} /> 
+      <MediaPlayer />
+      <ShareSaveButtons />
+    </Layout>
   );
 }
 
