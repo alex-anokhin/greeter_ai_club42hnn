@@ -6,7 +6,7 @@ import {
   Logo,
   Title,
 } from "./header-styled";
-import IconLogo from "../img/icons/logo.png";
+import IconLogo from "../img/icons/logo.jpg";
 import { Link } from "react-router-dom";
 
 function Header() {

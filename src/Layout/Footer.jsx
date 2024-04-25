@@ -1,5 +1,5 @@
-import { FooterContainer, Logo, LinkContainer, Link } from "./footer-styled";
-import IconLogo from "../img/icons/logo.png";
+import { FooterContainer, Logo, LinkContainer } from "./footer-styled";
+import IconLogo from "../img/icons/logo.jpg";
 
 function Footer() {
   return (
@@ -9,7 +9,7 @@ function Footer() {
         <a href="#">Faq's</a>
         <a href="#">Terms and conditions</a>
         <a href="#">Privacy Policy</a>
-        <a href="https://ap-global.net/">42 AI CLUB</a>
+        <a href="#">42 AI CLUB</a>
         <a>&copy; All rights reserved</a>
       </LinkContainer>
     </FooterContainer>
