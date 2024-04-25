@@ -7,38 +7,25 @@ const FooterContainer = styled.footer`
   background-color: #efefef;
   width: 100%;
   margin-top: 30px;
-  display: inline-block;
+  display: block;
+  text-align: center;
 `;
 
 const Logo = styled.img`
-  width: 100px;
+  width: 300px;
   height: auto;
-  margin-top: 10px;
-  @media (max-width: 960px) {
-    width: 90px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  display: block;
+  margin: 20px auto;
+  padding-top: 20px;
 `;
 
 const LinkContainer = styled.div`
   display: inline-block;
   margin: 30px auto 20px auto;
-  @media (max-width: 800px) {
-    width: 100%;
-    margin-top: 10px;
-  }
-  @media (min-width: 970px) {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    float: right;
-    display: flex;
-    justify-content: center;
-  }
+  justify-content: center;
 `;
 
-const Link = styled.a`
+const Content = styled.a`
   font-family: Montserrat;
   font-size: 13px;
   text-transform: uppercase;
@@ -59,4 +46,4 @@ const Link = styled.a`
   }
 `;
 
-export { FooterContainer, Logo, LinkContainer, Link };
+export { FooterContainer, Logo, LinkContainer, Content };

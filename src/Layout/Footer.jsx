@@ -1,4 +1,4 @@
-import { FooterContainer, Logo, LinkContainer } from "./footer-styled";
+import { FooterContainer, Logo, LinkContainer, Content } from "./footer-styled";
 import IconLogo from "../img/icons/logo.jpg";
 
 function Footer() {
@@ -6,11 +6,8 @@ function Footer() {
     <FooterContainer>
       <Logo src={IconLogo} />
       <LinkContainer>
-        <a href="#">Faq's</a>
-        <a href="#">Terms and conditions</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">42 AI CLUB</a>
-        <a>&copy; All rights reserved</a>
+        <Content href="#">42 AI CLUB</Content>
+        <Content>&copy; All rights reserved</Content>
       </LinkContainer>
     </FooterContainer>
   );

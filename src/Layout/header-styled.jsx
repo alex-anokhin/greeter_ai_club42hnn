@@ -24,23 +24,17 @@ const Title = styled.p`
   text-transform: uppercase;
   display: inline;
   letter-spacing: 0px;
-  @media (max-width: 500px) {
-    display: none;
-  }
 `;
 
-const LeftContainer = styled.div``;
-
-const RightContainer = styled.div`
-  margin-top: -50px;
+const Container = styled.div`
+  margin-top: 0;
   margin-right: 10%;
   float: right;
 `;
 
 export {
   HeaderContainer,
-  LeftContainer,
+  Container,
   Logo,
   Title,
-  RightContainer,
 };

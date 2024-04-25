@@ -1,30 +1,20 @@
-import { useState } from "react";
-
 import {
   HeaderContainer,
-  LeftContainer,
+  Container,
   Logo,
   Title,
 } from "./header-styled";
 import IconLogo from "../img/icons/logo.jpg";
-import { Link } from "react-router-dom";
 
 function Header() {
-  const [open, setOpen] = useState(false);
-
-  function handeDropdownDisplay(e) {
-    e.preventDefault();
-    return setOpen(!open);
-  }
-
   return (
     <HeaderContainer>
-      <LeftContainer>
-        <Link to="/">
+      <Container>
+        <a to="/">
           <Logo src={IconLogo} />
-        </Link>
+        </a>
         <Title>GREETER AI</Title>
-      </LeftContainer>
+      </Container>
     </HeaderContainer>
   );
 }
