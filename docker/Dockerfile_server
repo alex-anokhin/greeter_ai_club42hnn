@@ -1,0 +1,11 @@
+# Используем базовый образ Python
+FROM python:alpine
+
+# Устанавливаем зависимости
+RUN pip install flask requests
+
+# Копируем наш серверный код внутрь контейнера
+COPY app/server.py .
+
+# Определяем команду запуска сервера при запуске контейнера
+CMD ["python", "server.py"]

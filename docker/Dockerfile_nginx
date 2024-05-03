@@ -1,0 +1,8 @@
+# Используем базовый образ nginx
+FROM nginx:alpine
+
+# Заменяем конфигурацию nginx нашим собственным
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+
+# Копируем наш index.html в директорию с HTML файлами nginx
+COPY src/index.html /usr/share/nginx/html/index.html
