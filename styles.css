@@ -120,6 +120,7 @@ nav {
     height: auto;
     width: 90vw;
     min-width: 240px;
+    max-width: 500px;
 }
 .share-save-buttons {
     margin-top: 20px;
