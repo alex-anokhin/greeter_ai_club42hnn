@@ -1,8 +1,11 @@
-# docker-microservice-app-test
-Project (webapp) for testing microservice arcitecture implemented with docker containers
+# GREETER AI
+## AI student club in 42Heilbronn
+### docker-microservice-app
+Generative AI project (webapp) for creating personalized video greetings  implemented with microservice arcitecture in docker containers
 
-## project structure
-- project_folder/
+#### project structure
+- project/
+    - docker-compose.yaml
     - docker/
         - Dockerfile_nginx
         - Dockerfile_server
@@ -10,17 +13,19 @@ Project (webapp) for testing microservice arcitecture implemented with docker co
         - nginx.conf
     - app/
         - server.py
-        - requirements.txt
     - src/
         - index.html
+        - main.js
+    - .gitignore
+    - README.md
 
-## How to Run the Service
+#### How to Run the Service
 
 1. Make sure you have Docker and Docker Compose installed.
 2. Clone this repository:
 
     ```
-    git clone https://github.com/alex-anokhin/docker-microservice-app-test.git
+    git clone https://github.com/alex-anokhin/greeter_ai_club42hnn.git
     ```
 
 3. Navigate to the project directory:
@@ -39,7 +44,7 @@ Project (webapp) for testing microservice arcitecture implemented with docker co
 5. Once the service is running, open your web browser and go to `http://localhost:8083` to access the application.
 
 
-## How to Stop the Service
+#### How to Stop the Service
 
 6. To stop the service, run the following command:
 
@@ -47,9 +52,19 @@ Project (webapp) for testing microservice arcitecture implemented with docker co
 	docker-compose down
     ```
 
+
 This command will stop and remove all containers created for the project.
 
-## Additional Commands
+#### Additional Commands
 
-- `docker-compose logs phrase-server`: View logs of the server.
-- `docker-compose logs phrase-nginx`: View logs of Nginx.
+
+7. To run the service with rebuild in depricated mode, run the following command:
+
+    ```
+	docker-compose up --build -d
+    ```
+8. To run with rebuild, and wathing logs run the following command:
+
+    ```
+	docker-compose up --build
+    ```
