@@ -1,2 +1,2 @@
-models/
-llm/server-llm.py
+llm/models/mistral-7b-instruct-v0.2.Q5_K_M.gguf
+ollama_client/

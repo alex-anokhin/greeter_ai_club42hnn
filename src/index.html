@@ -4,83 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phrase App</title>
+    <title>Greeter AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 1rem;
+            max-width: 727px;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+        label {
+            display: block;
+            margin-bottom: .5rem;
+        }
+        input[type="text"],
+        textarea {
+            padding: .75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: .5rem;
+            resize: vertical;
+        }
+        button {
+            display: block;
+            margin: .0 auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, hsl(201, 95%, 50%), hsl(291, 95%, 50%));
+            color: #fff;
+            border: none;
+            border-radius: .75rem;
+            cursor: pointer;
+            transition: background-color .3s;
+        }
+        button:hover,
+        button:focus {
+            box-shadow: 0 .25rem .125rem hsla(221, 75%, 50%, 0.5);
+        }
+        button:active {
+            background: linear-gradient(to right, hsl(201, 95%, 40%), hsl(291, 95%, 40%));
+            box-shadow: 0 .125rem .125rem hsla(221, 75%, 50%, 0.5);
+        }
+    </style>
 </head>
 <body>
-    <!-- <h1 id="phrase">Loading...</h1>
-    <button onclick="refreshPhrase()">Refresh</button>
-    <p></p> -->
-    <!-- <form id="phraseForm">
-        <input type="text" name="persona" placeholder="Enter a Character">
-        <input type="textarea" name="greetText" placeholder="Enter a Greeting">
-        <label for="temperature">Set creativness:</label>
-        <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1">
-        <button type="submit">Send</button>
-    </form> -->
-    <form id="phraseForm" style="display: flex; flex-direction: column; row-gap: 0.5rem;">
+    <h2>Greeter AI</h2>
+    <form id="phraseForm">
         <label for="persona">Choose a character:</label>
-        <input type="text" name="persona" placeholder="Enter a Character">
+        <input type="text" name="persona" placeholder="Enter a Character" required>
         
         <label for="greetText">Type what Character needs to say:</label>
-        <input name="greetText" placeholder="Enter a Greeting"></input>
+        <input  type="text" name="greetText" placeholder="Enter a Greeting" required>
         
-        <label for="temperature">Set Creativeness:</label>
-        <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1">
+        <!-- <label for="temperature">Set Creativeness:</label>
+        <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1"> -->
         
         <button type="submit">Generate phrase</button>
     </form>
-    <p></p>
-    <!-- <h3 id="promt">Loading...</h3> -->
-    <form  id="promt2videoForm" style="display: flex; flex-direction: column;">
+    <form  id="promt2videoForm">
         <label for="promt2video">Phrase for video:</label>
-        <textarea name="promt2video" id="promt2video" cols="30" rows="10">Generate phrase first!</textarea>
+        <textarea name="promt2video" id="promt2video" placeholder="Generate or type phrase first!"
+        cols="30" rows="10" required></textarea>
         <button type="submit">Generate video</button>
     </form>
-    <script>
-        // function refreshPhrase() {
-        //     fetch('/api/phrase')
-        //     .then(response => response.text())
-        //     .then(phrase => {
-        //         document.getElementById('phrase').innerText = phrase;
-        //     });
-        // }
-        // refreshPhrase();
-
-        
-        document.getElementById("phraseForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission behavior
-            
-            // Get the entered phrase from the form input
-            const persona = document.querySelector('input[name="persona"]').value;
-            const greetText = document.querySelector('input[name="greetText"]').value;
-            const temperature = document.querySelector('input[name="temperature"]').value;
-            
-            // Create the data object to be sent in the request body
-            const requestData = {
-                "system_message": `You are an ${persona}, response text must be a direct speech without emojies; skip unfinished sentances`,
-                "user_message": greetText,
-                "max_tokens": 99,
-                "temperature": temperature,
-            };
-
-            // Send a request to the server with the entered phrase
-            fetch('/api/mistral', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestData) // Stringify the object before sending
-            })
-            .then(response => response.text())
-            .then(promt => {
-                const answer = JSON.parse(promt);
-                const text = answer.choices[0].text;
-                const instIndex = text.indexOf("[/INST]");
-                const genText = text.substring(instIndex + "[/INST]".length).trim();
-                console.log(genText);
-                document.getElementById('promt2video').innerText = `${genText}`;
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>

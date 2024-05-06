@@ -1,8 +1,14 @@
 # Используем базовый образ nginx
 FROM nginx:alpine
 
+WORKDIR /usr/share/nginx/html/
 # Заменяем конфигурацию nginx нашим собственным
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Копируем наш index.html в директорию с HTML файлами nginx
-COPY src/index.html /usr/share/nginx/html/index.html
+COPY src/ .
+
+# docker-copmose up --build -d  команда перебилдить и запустить контейнеры в свёрнутом режиме
+# docker-compose down команда остановить и удалить контейнеры
+
+# в папке src должны лежать только index.html и asssets

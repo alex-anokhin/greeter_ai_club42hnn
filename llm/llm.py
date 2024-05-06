@@ -19,17 +19,16 @@ def generate_response():
         data = request.get_json()
 
         # Проверка наличия обязательных полей в данных запроса
-        if 'system_message' in data and 'user_message' in data and 'max_tokens' in data and 'temperature' in data:
+        if 'system_message' in data and 'user_message' in data: # and 'temperature' in data:
             system_message = data['system_message']
             user_message = data['user_message']
-            max_tokens = int(data['max_tokens'])
-            temperature = float(data['temperature'])
+            # temperature = float(data['temperature'])
+            temperature = 0.7
+            max_tokens = 99
+            stop_str=["Q:", "A:"]
 
             # Формирование строки запроса к модели с учетом температуры
-            prompt = f"""<s>[INST] <<SYS>>
-            {system_message}
-            <</SYS>>
-            {user_message} [/INST]"""
+            prompt = f"""<s>[INST] <<SYS>>{system_message}<</SYS>>{user_message} [/INST]"""
 
             # Создание экземпляра модели, если она еще не создана
             if model is None:
@@ -39,8 +38,12 @@ def generate_response():
                 # Инициализация модели
                 model = Llama(model_path=model_path)
 
+                # tokens = model.tokenize(prompt)
+                # for token in model.generate(tokens, max_tokens=max_tokens, temp=temperature):
+                #     print(model.detokenize([token]))
+
             # Выполнение модели с использованием строки запроса, максимального количества токенов и температуры
-            output = model(prompt, max_tokens=max_tokens, temperature=temperature, echo=True)
+            output = model(prompt, max_tokens=max_tokens, top_k=50, top_p=0.9, stop=stop_str, temperature=temperature, echo=False, repeat_penalty=1.1)
 
             # Возврат выходных данных модели в виде JSON ответа
             return jsonify(output)
