@@ -26,7 +26,8 @@
             margin-bottom: .5rem;
         }
         input[type="text"],
-        textarea {
+        textarea,
+        select {
             padding: .75rem;
             margin-bottom: 1rem;
             border: 1px solid #ccc;
@@ -52,28 +53,61 @@
             background: linear-gradient(to right, hsl(201, 95%, 40%), hsl(291, 95%, 40%));
             box-shadow: 0 .125rem .125rem hsla(221, 75%, 50%, 0.5);
         }
-    </style>
+        .audios {
+            margin-top: 1rem;
+        }
+        audio {
+            display: block;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        #audioPlayer div{
+            margin: 1.5rem 0 0 1.5rem;
+            /* color: #007bff; */
+        }
+        </style>
 </head>
 <body>
     <h2>Greeter AI</h2>
     <form id="phraseForm">
+    <h2>Greeter AI</h2>
+    <form id="phraseForm">
         <label for="persona">Choose a character:</label>
-        <input type="text" name="persona" placeholder="Enter a Character" required>
+        <!-- <input type="text" name="persona" placeholder="Enter a Character" required> -->
+        <select name="persona" required>
+            <option value="Elsa" selected>Elsa</option>
+            <option value="Thor">Thor</option>
+            <option value="Spiderman">Spiderman</option>
+            <option value="Rapunzel">Rapunzel</option>
+            <option value="Shrek">Shrek</option>
+            <option value="Hermione_Granger">Hermione Granger</option>
+            <option value="Harry_Potter">Harry Potter</option>
+        </select>
         
         <label for="greetText">Type what Character needs to say:</label>
         <input  type="text" name="greetText" placeholder="Enter a Greeting" required>
+        <input  type="text" name="greetText" placeholder="Enter a Greeting" required>
         
+        <!-- <label for="temperature">Set Creativeness:</label>
+        <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1"> -->
         <!-- <label for="temperature">Set Creativeness:</label>
         <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1"> -->
         
         <button type="submit">Generate phrase</button>
     </form>
     <form  id="promt2videoForm">
+    <form  id="promt2videoForm">
         <label for="promt2video">Phrase for video:</label>
         <textarea name="promt2video" id="promt2video" placeholder="Generate or type phrase first!"
-        cols="30" rows="10" required></textarea>
-        <button type="submit">Generate video</button>
+        cols="30" rows="8" required></textarea>
+        <button type="submit">Generate Audio</button>
     </form>
-    <script src="main.js"></script>
+    <!-- <h3>Audio Player</h3> -->
+    <div class="audios" id="audioPlayer">Voice:</div>
+    
+    <script src="textgen.js"></script>
+    <script src="audiogen.js"></script>
+
+    
 </body>
 </html>
