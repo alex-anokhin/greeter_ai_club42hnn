@@ -1,16 +1,17 @@
 # Импорт необходимых модулей из Flask и Llama
 from flask import Flask, request, jsonify
-from llama_cpp import Llama
+import llama
 import os
 
 # Создание объекта Flask приложения с названием "Llama server"
 app = Flask("llm-server")
 
+model_path = "models/Meta-Llama-3-8B-Instruct.Q4_0.gguf"
 # Инициализация переменной модели как None
-model = None
+model = llama.load_model(model_path)
 
 # Определение маршрута /llama с методом POST
-@app.route('/mistral', methods=['POST'])
+@app.route('/llama3', methods=['POST'])
 def generate_response():
     global model
 
@@ -58,4 +59,4 @@ def generate_response():
 
 # Запуск Flask приложения на хосте 0.0.0.0 и порту 5052
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5052, debug=True)
+    app.run(host='0.0.0.0', port=5051, debug=True)

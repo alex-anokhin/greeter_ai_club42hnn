@@ -1,4 +1,5 @@
-document.getElementById("promt2videoForm").addEventListener("submit", function(event) {
+let audioUrl = "";
+document.getElementById("promt2audioForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
     
     let audioPlayerDiv = document.getElementById("audioPlayer");
@@ -24,7 +25,7 @@ document.getElementById("promt2videoForm").addEventListener("submit", function(e
         audioPlayerDiv.appendChild(audio);
     }
 
-    phrase = document.getElementById("promt2video").value;
+    phrase = document.getElementById("promt2audio").value;
     persona = document.querySelector('select[name="persona"]').value.toLowerCase();
 
     fetch('http://localhost:5053/tts', {
@@ -45,10 +46,11 @@ document.getElementById("promt2videoForm").addEventListener("submit", function(e
     })
     .then(blob => {
         clearInterval(loader_for_audio); // Clear loader interval
-        audioLoader.innerHTML = ""; // Clear loader
-        let audioUrl = URL.createObjectURL(blob);
-        // console.log('Received audio URL:', audioUrl);
+        audioLoader.innerHTML = ""; // Clear loader text
+        audioUrl = URL.createObjectURL(blob);
+        console.log('Received audio URL:', audioUrl);
         createAudioPlayer(audioUrl);
+        // console.log(audioURL);
     })
     .catch(error => console.error('Error:', error));
 });

@@ -8,21 +8,27 @@ h2 {
     margin-bottom: 1rem;
     text-align: center;
 }
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
 label {
     display: block;
-    /* margin-bottom: .5rem; */
+    margin-bottom: .5rem;
 }
 input[type="text"],
-textarea {
-    padding: 1rem;
-    margin-bottom: .5rem;
+textarea,
+select {
+    padding: .75rem;
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: .5rem;
     resize: vertical;
 }
 button {
     display: block;
-    margin: .5rem auto;
+    margin: .0 auto;
     padding: 1rem 2rem;
     background: linear-gradient(to right, hsl(201, 95%, 50%), hsl(291, 95%, 50%));
     color: #fff;
@@ -33,9 +39,29 @@ button {
 }
 button:hover,
 button:focus {
-    box-shadow: 0 .25rem 1px hsla(221, 75%, 50%, 0.5);
+    box-shadow: 0 .25rem .125rem hsla(221, 75%, 50%, 0.5);
 }
 button:active {
     background: linear-gradient(to right, hsl(201, 95%, 40%), hsl(291, 95%, 40%));
-    box-shadow: 0 .125rem 1px hsla(221, 75%, 50%, 0.5);
+    box-shadow: 0 .125rem .125rem hsla(221, 75%, 50%, 0.5);
+}
+.audios {
+    margin-top: 1rem;
+}
+audio {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+}
+.videos {
+    margin-top: 1rem;
+}
+video {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+}
+#audioPlayer div{
+    margin: 1.5rem 0 0 1.5rem;
+    /* color: #007bff; */
 }

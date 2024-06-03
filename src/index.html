@@ -5,8 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greeter AI</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <!-- <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5"> -->
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <!-- <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="favicon/browserconfig.xml"> -->
+    <meta name="theme-color" content="#ffffff">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="manifest" href="favicon/site.webmanifest"> -->
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             margin: 0 auto;
             padding: 1rem;
@@ -19,7 +30,7 @@
         form {
             display: flex;
             flex-direction: column;
-            margin-bottom: 2rem;
+            margin-top: 1rem;
         }
         label {
             display: block;
@@ -61,53 +72,119 @@
             margin-top: 1rem;
             width: 100%;
         }
+        .videos {
+            margin-top: 1rem;
+        }
+        .videos div {
+            margin-top: 1rem;
+            color: blue;
+            /* border: 1px solid #aaa; */
+        }
+        .videos img,
+        video {
+            display: block;
+            margin-top: 1rem;
+            width: 100%;
+        }
         #audioPlayer div{
             margin: 1.5rem 0 0 1.5rem;
-            /* color: #007bff; */
+
         }
+        .language-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adjust as needed */
+            margin-bottom: 1rem;
+        }
+
+        .language-selector input[type="radio"] {
+            display: none; /* Hide the radio buttons */
+        }
+
+        .language-selector label {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .language-selector label:hover {
+            background-color: #e0e0e0;
+        }
+
+        .language-selector input[type="radio"]:checked + label {
+            background-color: hsl(251, 45%, 55%);
+            /* background: linear-gradient(to right, hsl(201, 45%, 40%), hsl(291, 45%, 40%)); */
+            color: #fff;
+        }
+        footer {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
         </style>
 </head>
 <body>
     <h2>Greeter AI</h2>
-    <form id="phraseForm">
-    <h2>Greeter AI</h2>
+    <!-- <p>Choose a character, language of greeting and give a task for the character what to say. Then generate a video-greeting.</p> -->
+    <div class="videos" id="videoPlayer"></div>
     <form id="phraseForm">
         <label for="persona">Choose a character:</label>
-        <!-- <input type="text" name="persona" placeholder="Enter a Character" required> -->
-        <select name="persona" required>
+        <select name="persona" id="personaDropdown" required>
             <option value="Elsa" selected>Elsa</option>
             <option value="Thor">Thor</option>
             <option value="Spiderman">Spiderman</option>
             <option value="Rapunzel">Rapunzel</option>
             <option value="Shrek">Shrek</option>
-            <option value="Hermione_Granger">Hermione Granger</option>
-            <option value="Harry_Potter">Harry Potter</option>
+            <!-- <option value="Hermione_Granger">Hermione Granger</option> -->
+            <!-- <option value="Harry_Potter">Harry Potter</option> -->
         </select>
+        <label>Select a language:</label>
+        <div class="language-selector">
+            <input type="radio" id="english" name="language" value="en" checked>
+            <label for="english">EN</label>
+
+            <input type="radio" id="german" name="language" value="de">
+            <label for="german">DE</label>
+
+            <input type="radio" id="spanish" name="language" value="es">
+            <label for="spanish">ES</label>
+
+            <input type="radio" id="french" name="language" value="fr">
+            <label for="french">FR</label>
+
+            <input type="radio" id="russian" name="language" value="ru">
+            <label for="russian">RU</label>
+
+            <input type="radio" id="italian" name="language" value="it">
+            <label for="italian">IT</label>
+        </div>
+
+        <label for="greetText">Give a task for the Character:</label>
+        <input  type="text" name="greetText" placeholder="Say Hello and greet Marcus with 7th birtday!" required>
         
-        <label for="greetText">Type what Character needs to say:</label>
-        <input  type="text" name="greetText" placeholder="Enter a Greeting" required>
-        <input  type="text" name="greetText" placeholder="Enter a Greeting" required>
-        
-        <!-- <label for="temperature">Set Creativeness:</label>
-        <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1"> -->
         <!-- <label for="temperature">Set Creativeness:</label>
         <input type="range" id="temperature" name="temperature" min="0.1" max="0.9" step="0.1" value="0.1"> -->
         
         <button type="submit">Generate phrase</button>
     </form>
     <form  id="promt2videoForm">
-    <form  id="promt2videoForm">
-        <label for="promt2video">Phrase for video:</label>
+        <label for="promt2video">Phrase for Character's video-greeting:</label>
         <textarea name="promt2video" id="promt2video" placeholder="Generate or type phrase first!"
         cols="30" rows="8" required></textarea>
-        <button type="submit">Generate Audio</button>
+        <button type="submit">Generate Video</button>
+        <!-- <button type="submit">Generate Audio</button> -->
     </form>
-    <!-- <h3>Audio Player</h3> -->
-    <div class="audios" id="audioPlayer">Voice:</div>
+    <footer>
+        <p>Text generated with Meta Llama 3</p>
+    </footer>
     
+    <script src="main.js"></script>
     <script src="textgen.js"></script>
-    <script src="audiogen.js"></script>
-
+    <script src="loader.js"></script>
+    <script src="videogen.js"></script>
     
 </body>
 </html>

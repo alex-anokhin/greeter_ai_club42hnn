@@ -1,8 +1,8 @@
 # Используем базовый образ Python
-FROM python:alpine
+FROM python:3.9
 
 # Устанавливаем зависимости
-RUN pip install flask requests
+RUN pip install  --upgrade flask flask_cors requests gradio_client
 
 # Копируем наш серверный код внутрь контейнера
 COPY app/server.py .

@@ -1,0 +1,5 @@
+FROM ollama/ollama
+
+RUN ollama serve
+RUN ollama create speaker -f ./Modelfile
+RUN ollama run speaker

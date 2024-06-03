@@ -1,14 +1,29 @@
-
-
 document.getElementById("phraseForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
     let phrase_area = document.getElementById('promt2video');
     phrase_area.value = "Loading";
-    // console.log(phrase_area);
     
     // Get the entered phrase from the form input
     let persona = document.querySelector('select[name="persona"]').value;
     let greetText = document.querySelector('input[name="greetText"]').value;
+    const checkedRadioButton = document.querySelector('input[name="language"]:checked');
+    // Get the value of the checked radio button
+    const selectedLanguage = checkedRadioButton ? checkedRadioButton.value : null;
+    // Log the selected language
+    if (selectedLanguage == "en") {
+        language = "english";
+    } else if (selectedLanguage == "ru") {
+        language = "russian";
+    } else if (selectedLanguage == "fr") {
+        language = "french";
+    } else if (selectedLanguage == "de") {
+        language = "german";
+    } else if (selectedLanguage == "es") {
+        language = "spanish";
+    } else if (selectedLanguage == "it") {
+        language = "italian";
+    }
+
     let index = 0;
     const loader_for_phrase = setInterval(() => {
         if (index < 3) {
@@ -21,44 +36,68 @@ document.getElementById("phraseForm").addEventListener("submit", function(event)
         }
     }, 333);
 
-    let requestData = {
-        "model": "mistral",
-        "system":`Answer as ${persona}; response text must be a plain text without: emojies, hashtags, unfinished sentances or questions.`,
+    let requestData = { // for ollama server
+        "model": "llama3",
+        // "system":`Answer as ${persona}, response must be a plain text without: emojies, hashtags, unfinished sentances and questions; use less than 50 words.`,
+        "system":`You are ${persona}, use ${language} language for answer, use less than 50 words for answer, do not use emojies or hashtags.`,
+        "persona": persona,
+        "language": language,
+        // "stream": true,
         "prompt": greetText,
-        "temperature":0.9,
-        "stream": true,
-        "max_token": 99
+        // "options": {
+        //     "stop": ["#"],
+        //     "num_predict": 99,
+        //     "temperature":0.9,
+        //     "top_p": 0.5,
+        //     "top_k": 25,
+        //     "presence_penalty": 0.5
+        // }
     };
-    
+
+    let requestData2 = { // for llama-cpp-python server
+            "model": "llama3_local",
+            "messages": [
+              {
+                "role": "system",
+                "content": `You are ${persona}, use ${language} language for answer, use less than 50 words for answer, do not use emojies or hashtags.`
+              },
+              {
+                "role": "user",
+                "content": greetText
+              }
+            ],
+            "max_tokens": 100,
+            "temperature": 0.3,
+            "stop": ["#"],
+            "num_predict": 99,
+            "top_p": 0.5,
+            "top_k": 25,
+            "presence_penalty": 0.5
+          }
     
     // Send a request to the server with the entered phrase
-    fetch('http://localhost:11434/api/generate', {
+    fetch('/v1/chat/completions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData) // Stringify the object before sending
+        body: JSON.stringify(requestData2) // Stringify the object before sending
     })
-    .then(response => response.text())
-    .then(responseText => {
-        // Split the response text by newline characters
-        let responses = responseText.trim().split('\n');
-        
-        // Parse each JSON object separately
-        let words = [];
-        responses.forEach(jsonString => {
-            const jsonObject = JSON.parse(jsonString);
-            const text = jsonObject.response;
-            words.push(text);
-        });
-        // Clear the phrase area from Loader
+    .then(response => response.json()) // Assuming the server sends a JSON response
+    .then(responseJson => {
+        // console.log('Response:', responseJson.choices[0].message.content.trim());
+        const text = responseJson.choices[0].message.content.trim();
+        const words = text.split(' '); // Split the text into individual words
+
+        // // Clear the phrase area from Loader
         phrase_area.value = "";
         clearInterval(loader_for_phrase);
-        // Display the response text in the phrase area
-        words.forEach((word, id) => {
+
+        // // Display each word with a delay
+        words.forEach((word, index) => {
             setTimeout(() => {
-                phrase_area.value += word;
-            }, id * 15);
+                phrase_area.value += (index > 0 ? ' ' : '') + word; // Add space between words
+            }, index * 15); // Adjust the delay as needed (currently 500ms)
         });
     })
     .catch(error => {

@@ -1,27 +1,19 @@
 version: '3'
 
 services:
-  # llm:
-  #   build:
-  #     context: .
-  #     dockerfile: docker/Dockerfile_server_llm
-  #   ports:
-  #     - "5052:5052"
-  #   container_name: llm
-  #   volumes:
-  #     - /Users/alexanokhin/projects/docker-microservice-app-test/llm/models:/models
-  #   environment:
-  #     - MODEL_PATH=models/mistral-7b-instruct-v0.2.Q5_K_M.gguf
+  llm-server:
+    image: ghcr.io/abetlen/llama-cpp-python:latest
+    ports:
+      - "8089:8000"
+    container_name: llm-server
+    volumes:
+      - /Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/llama_cpp/models:/models
+    environment:
+      - MODEL=/models/Meta-Llama-3-8B-Instruct.Q4_0.gguf
+      - PORT=8000
+    networks:
+      - greeterai
 
-  # phrase-server:
-  #   build:
-  #     context: .
-  #     dockerfile: docker/Dockerfile_server
-  #   ports:
-  #     - "5051:5051"
-  #   container_name: phrase-server
-  #   depends_on:
-  #     - llm
 
   phrase-nginx:
     build:
@@ -29,10 +21,11 @@ services:
       dockerfile: docker/Dockerfile_nginx
     ports:
       - "8083:80"
-    # depends_on:
-      # - phrase-server
-      # - llm
-  #     - tts-server
+    volumes:
+      - ./src:/usr/share/nginx/html
+    container_name: phrase-nginx
+    networks:
+      - greeterai
 
   # tts-server:  # New service for Flask server
   #   build:
@@ -42,8 +35,35 @@ services:
   #     - "5053:5053"  # Map port 5053 of host to port 5053 of container
   #   container_name: tts-server
   #   volumes:
-  #     - /output:/app/output  # Mount volume for output files
-  #     - /Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/tts/target:/app/target  # Mount volume for voices
-  #   environment: 
-  #     - VOICES_PATH=target  # Set environment variable for voices path
-  #     - OUTPUT_PATH=output  # Set environment variable for output path
+  #     # - /Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/my_tts/output:/app/output  # Mount volume for output files
+  #     # - /Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/my_tts/target:/app/target  # Mount volume for voices
+  #     - /Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/my_tts:/app  # Mount volume for app
+  # #   environment: 
+  # #     - VOICES_PATH=target  # Set environment variable for voices path
+  # #     - OUTPUT_PATH=output  # Set environment variable for output path
+  #   networks:
+  #     - greeterai  # Connect to the greeterai network
+      
+  # ngrok:
+  #   image: ngrok/ngrok:latest
+  #   command: ngrok http http://localhost:8083
+  #   environment:
+  #     - NGROK_AUTHTOKEN=2gID6bRebl29rVvyyMtRaKZ2dzl_6SXEe2Pz5wtveYjBEJNmF
+  #   network_mode: host
+  #   container_name: ngrok-server
+  #   depends_on:
+  #     - phrase-nginx
+
+networks:
+  greeterai:
+    external: true
+
+  # w2l-server:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/Dockerfile_server
+  #   ports:
+  #     - "5051:5051"
+  #   container_name: w2l-server
+  #   networks:
+  #     - greeterai
