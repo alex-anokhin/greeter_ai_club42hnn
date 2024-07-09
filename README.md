@@ -77,8 +77,8 @@ Now you can go to http://localhost:8084 and see if success:
     conda create -n greeterai_lw_p311 python=3.11 -y && conda activate greeterai_lw_p311
     pip install -r requirements.txt
     cd basicsr
-    nano __init.py__
-    # from .test import * comment this line and save
+    nano __init__.py
+    # from .test import * comment this line and save (ctrl + O) + Enter + (ctrl + x)
     cd ..
     python infer_server_lw.py
     ```
