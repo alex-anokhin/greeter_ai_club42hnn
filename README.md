@@ -90,8 +90,7 @@ Now you can go to http://localhost:8081 and see if success:
     }
     ```
 
-
-
+Now you can use app on: http://localhost:5173/
 
 11. extra commands:
 
