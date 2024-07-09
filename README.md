@@ -1,7 +1,7 @@
 # GREETER AI
 ## AI student club in 42Heilbronn
-### docker-microservice-app
-Generative AI project (webapp) for creating personalized video greetings  implemented with microservice arcitecture in docker containers
+### generative-ai-app
+Generative AI project (webapp) for creating personalized video greetings (lipsync videos) implemented with react and flask arcitecture
 
 COMMANDS for LINUX/MAC_OS
 
