@@ -39,8 +39,8 @@ export const	BlockGenerateGreeting = ({name, greetText, language, setGreetText, 
 		};
 
 		// fetch('http://localhost:11434/api/chat', {
-		// fetch('http://localhost:8081/infer_text', {
-		fetch('api/infer_text', {
+		fetch('http://localhost:8081/infer_text', {
+		// fetch('api/infer_text', {
 		// fetch('https://choice-goose-loved.ngrok-free.app/infer_text', {
 		// fetch('https://longhorn-verified-tetra.ngrok-free.app/infer_text', {
 			method: 'POST',

@@ -9,8 +9,8 @@ export const MyQRCode = ({ persona, value, videoUrl }) => {
     try {
       // const response = await fetch('https://choice-goose-loved.ngrok-free.app/upload_video', {
       // const response = await fetch('https://longhorn-verified-tetra.ngrok-free.app/upload_video', {
-      // const response = await fetch('http://localhost:8081/upload_video', {
-      const response = await fetch('api/upload_video', {
+      const response = await fetch('http://localhost:8081/upload_video', {
+      // const response = await fetch('api/upload_video', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

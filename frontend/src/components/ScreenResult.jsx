@@ -94,8 +94,8 @@ export const	ScreenResult = ({ heroes, heroIdx, videoUrl, setVideoUrl, responseT
 
 		// fetch('https://choice-goose-loved.ngrok-free.app/infer_image', {
 		// fetch('https://longhorn-verified-tetra.ngrok-free.app/infer_image', {
-		// fetch('http://localhost:8081/infer_image', {
-		fetch('api/infer_image', {
+		fetch('http://localhost:8081/infer_image', {
+		// fetch('api/infer_image', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
