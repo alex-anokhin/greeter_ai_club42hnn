@@ -22,7 +22,12 @@ TEMP_DIRECTORY = file_check.TEMP_DIR
 MEDIA_DIRECTORY = file_check.MEDIA_DIR
 OUTPUT_DIRECTORY = file_check.OUTPUT_DIR
 CURRENT_DIRECTORY = os.getcwd()
-max_threads = 6
+
+# Perform checks to ensure that all required files are present
+file_check.perform_check(bg_model_name='RealESRGAN_x2plus', restorer='GFPGAN', use_gan_version=True)
+
+# Set device
+max_threads = 4
 
 
 def clear_cuda_cache():
@@ -32,12 +37,12 @@ def clear_cuda_cache():
 # Clear the CUDA cache
 clear_cuda_cache()
 
-@app.route('/api')
+@app.route('/')
 def index():
     response = {"message": "Lip Wise server is available!"}
     return jsonify(response)
 
-@app.route('/api/infer_text', methods=['GET', 'POST', 'OPTIONS'])
+@app.route('/infer_text', methods=['GET', 'POST', 'OPTIONS'])
 def infer_text():
     if request.method == 'OPTIONS':
         # Respond to CORS preflight request
@@ -77,7 +82,7 @@ def infer_text():
             text = "Can you repeat your question?"
             return jsonify({'error': str(e)}), 400
 
-@app.route('/api/infer_image', methods=['GET', 'POST', 'OPTIONS'])
+@app.route('/infer_image', methods=['GET', 'POST', 'OPTIONS'])
 # @app.route('/w2l_image', methods=['POST'])
 def infer_image():
     if request.method == 'OPTIONS':
@@ -159,7 +164,7 @@ def infer_image():
             print(f"Error during inference: {e}")
             return jsonify({'error': str(e)}), 400
 
-@app.route('/api/upload_video', methods=['GET', 'POST', 'OPTIONS'])
+@app.route('/upload_video', methods=['GET', 'POST', 'OPTIONS'])
 def upload_video():
     if request.method == 'OPTIONS':
         # Respond to CORS preflight request

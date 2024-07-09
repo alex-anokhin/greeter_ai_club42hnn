@@ -3,68 +3,102 @@
 ### docker-microservice-app
 Generative AI project (webapp) for creating personalized video greetings  implemented with microservice arcitecture in docker containers
 
+COMMANDS for LINUX/MAC_OS
+
 #### project structure
 - project/
-    - docker-compose.yaml
-    - docker/
-        - Dockerfile_nginx
-        - Dockerfile_server
-    - nginx/
-        - nginx.conf
-    - app/
-        - server.py
-    - src/
-        - index.html
-        - main.js
+    - copy_to_Lip_Wise/
+    - frontend/
+    - my_tts/
     - .gitignore
     - README.md
 
 #### How to Run the Service
 
-1. Make sure you have Docker and Docker Compose installed.
-2. Clone this repository:
+1. Make sure you have CLI ollama, npm, miniconda installed.
+2. Pull llama3 and aya models from ollama with:
+    ```
+    ollama pull llama3
+    ollama pull aya
+    ```
+
+3. Clone this repository:
 
     ```
     git clone https://github.com/alex-anokhin/greeter_ai_club42hnn.git
     ```
 
-3. Navigate to the project directory:
+4. Navigate to the project directory:
 
     ```
-    cd docker-microservice-app-test
+    cd greeter_ai_club42hnn && git clone https://github.com/pawansharmaaaa/Lip_Wise.git
     ```
 
-4. Run the service using Docker Compose:
+5. copy all from copy_to_Lip_Wise to Lip_Wise:
 
     ```
-    docker-compose up -d
+    cp -r copy_to_Lip_Wise/* Lip_Wise/
+    ```
+## RUN THE FRONTEND
+6. Run the react-app:
+    ```
+    cd frontend
+    npm i
+    npm run dev
     ```
 
-	This command will create and start containers for the server and Nginx.
-5. Once the service is running, open your web browser and go to `http://localhost:8083` to access the application.
+Now you can check frontend on http://localhost:5173/
 
-
-#### How to Stop the Service
-
-6. To stop the service, run the following command:
+## RUN THE TTS
+7. Open new terminal or split it in vs code
+8. Run the tts (start enter commands from greeter_ai_club42hnn folder)
 
     ```
-	docker-compose down
+	cd my_tts
+    conda create -n greeterai_tts_p311 python=3.11 -y && conda activate greeterai_tts_p311
+    pip install -r requirements.txt
+    python tts.py
+    ```
+
+Now you can go to http://localhost:8084 and see if success:
+
+    ```
+    {
+        "message": "TTS is available!"
+    }
+    ```
+
+## RUN THE LIP_WISE
+9. Open new terminal or split it in vs code
+10. Run the Lip_Wise (start enter commands from greeter_ai_club42hnn folder)
+
+    ```
+	cd Lip_Wise/
+    conda create -n greeterai_lw_p311 python=3.11 -y && conda activate greeterai_lw_p311
+    pip install -r requirements.txt
+    cd basicsr
+    nano __init.py__
+    # from .test import * comment this line and save
+    cd ..
+    python infer_server_lw.py
+    ```
+Now you can go to http://localhost:8081 and see if success:
+
+    ```
+    {
+        "message": "Lip Wise server is available!"
+    }
     ```
 
 
-This command will stop and remove all containers created for the project.
-
-#### Additional Commands
 
 
-7. To run the service with rebuild in depricated mode, run the following command:
+11. extra commands:
 
-    ```
-	docker-compose up --build -d
-    ```
-8. To run with rebuild, and wathing logs run the following command:
+to disable environment
 
     ```
-	docker-compose up --build
+	conda deactivate
     ```
+
+to stop the server press ^C (ctrl + C)

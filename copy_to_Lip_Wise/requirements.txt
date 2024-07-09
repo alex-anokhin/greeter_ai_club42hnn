@@ -12,6 +12,7 @@ realesrgan>=0.3.0
 torch>=2.1.2
 torchvision==0.16.2
 tqdm>=4.66.1
+PILLOW
 WeTransferTool
 Flask
 Flask-Cors
