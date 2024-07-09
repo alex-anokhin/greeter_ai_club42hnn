@@ -5,7 +5,7 @@ Generative AI project (webapp) for creating personalized video greetings (lipsyn
 
 COMMANDS for LINUX/MAC_OS
 
-#### project structure
+### project structure
 - project/
     - copy_to_Lip_Wise/
     - frontend/
@@ -13,7 +13,7 @@ COMMANDS for LINUX/MAC_OS
     - .gitignore
     - README.md
 
-#### How to Run the Service
+## How to Run the Service
 
 1. Make sure you have CLI ollama, npm, miniconda installed.
 2. Pull llama3 and aya models from ollama with:
@@ -39,7 +39,7 @@ COMMANDS for LINUX/MAC_OS
     ```
     cp -r copy_to_Lip_Wise/* Lip_Wise/
     ```
-## RUN THE FRONTEND
+### RUN THE FRONTEND
 6. Run the react-app:
     ```
     cd frontend
@@ -49,7 +49,7 @@ COMMANDS for LINUX/MAC_OS
 
 Now you can check frontend on http://localhost:5173/
 
-## RUN THE TTS
+### RUN THE TTS
 7. Open new terminal or split it in vs code
 8. Run the tts (start enter commands from greeter_ai_club42hnn folder)
 
@@ -68,7 +68,7 @@ Now you can go to http://localhost:8084 and see if success:
     }
     ```
 
-## RUN THE LIP_WISE
+### RUN THE LIP_WISE
 9. Open new terminal or split it in vs code
 10. Run the Lip_Wise (start enter commands from greeter_ai_club42hnn folder)
 
