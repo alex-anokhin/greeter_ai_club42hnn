@@ -1,0 +1,58 @@
+.cards {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	position: absolute;
+	bottom: 0rem;
+	padding-bottom: 9rem;
+
+	.thumb {
+		width: 5rem;
+		height: 5rem;
+		border: none;
+		outline: none;
+		margin: 0 0.25rem;
+		border-radius: 0.75rem;
+		transition: all 0.5s ease-in-out;
+		cursor: pointer;
+		background: transparent;
+		border: 1px solid transparent;
+
+		&:hover {
+			height: calc(5rem + 4px);
+			border: 1px solid white;
+		}
+
+		img {
+			border-radius: 0.75rem;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.thumb-0 {
+		width: 9rem;
+		height: 10rem;
+		border: 3px solid white;
+		margin: 0 0.5rem;
+		animation: glow-shadow 1s infinite alternate;
+
+		&:hover {
+			height: calc(10rem + 4px);
+			border: 3px solid white;
+		}
+	}
+
+	.thumb-1 {
+		width: 7rem;
+		height: 7rem;
+		border: 1px solid transparent;
+
+		&:hover {
+			height: calc(7rem + 4px);
+			border: 1px solid white;
+		}
+	}
+}

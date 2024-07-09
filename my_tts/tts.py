@@ -2,67 +2,46 @@ from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
 import os
 # import tempfile
-from TTS.api import TTS, ModelManager
+from TTS.api import TTS
 import torch
-
-# Patch the ask_tos function to automatically accept the terms
-def always_accept_tos(self, output_path):
-    return True
-
-ModelManager.ask_tos = always_accept_tos
+# from TTS.utils.io import ModelManager
 
 app = Flask('tts-server')
 CORS(app)  # Enable CORS for all routes
 
 # Initialize TTS
+# check if we have a GPU available
 device = "cuda" if torch.cuda.is_available() else "cpu"
-# if torch.cuda.is_available():
-#     device = "cuda"
-# elif torch.backends.mps.is_available():
-#     device = "mps"
-# else:
-#     device = "cpu"
-# print(f"Using device: {device}")
-
-# model_path = "/Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/my_tts/XTTS-v2/"
-# config_path = "/Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/my_tts/XTTS-v2/config.json"
-# dvae_path = "/XTTS-v2/dvae.pth"
-# mel_stats_path = "/XTTS-v2/mel_stats.pth"
-# speakers_path = "/XTTS-v2/speakers_xtts.pth"
-# vocab_path = "/XTTS-v2/vocab.json"
-# tts = TTS(
-#     model_path=model_path,
-#     config_path=config_path,
-#     # dvae_path=dvae_path,
-#     # mel_stats_path=mel_stats_path,
-#     # speakers_path=speakers_path,
-#     # vocab_path=vocab_path
-# ).to(device)
-# model_item = {"hf_url": "https://huggingface.co/coqui/XTTS-v2", "hf_hub": "coqui/XTTS-v2"}
-# output_path = "/Users/alexanokhin/Documents/ai42club/greeter_ai_club42hnn/my_tts/models/"
-# ModelManager.create_dir_and_download_model("tts_models/multilingual/multi-dataset/xtts_v2", model_item, output_path)
+print(f"Using device: {device}")
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+print("TTS model loaded")
+torch.backends.cudnn.enabled = False
+
+@app.route('/')
+def index():
+    response = {"message": "TTS is available!"}
+    return jsonify(response)
 
 @app.route('/tts', methods=['POST'])
 def generate_audio():
     data = request.get_json()
-    if 'text' in data and 'persona' in data:
+    if 'text' in data and 'persona' in data and 'language' in data:
         try:
             text = data['text']
             persona = data['persona']
-            language = data['language'] if 'language' in data else 'en'
-            reference_voice = persona + ".wav"
-            # Generate audio
-            # output_dir = tempfile.mkdtemp()
+            language = data['language']
+            reference_voice = persona.lower() + ".wav"
+            # set output directory
             output_dir = "output/"
             file_path = os.path.join(output_dir, "output_tmp.wav")
-            tts.tts_to_file(text, speaker_wav=f"target/{reference_voice}", language=language, file_path=file_path)
+            # Generate audio
+            tts.tts_to_file(text, language=language, speaker_wav=f"target/{reference_voice}", emotion="Positive", speed="1.1", file_path=file_path, split_sentences=False)
             return send_file(file_path, mimetype='audio/wav', as_attachment=True, conditional=True), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
     else:
-        return jsonify({"error": "Text not provided in request."}), 400
+        return jsonify({"error": "all input values not provided in request."}), 400
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5053, debug=True)
+    app.run(host='0.0.0.0', port=8084, debug=True)

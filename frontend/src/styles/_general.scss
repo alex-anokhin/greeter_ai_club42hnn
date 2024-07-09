@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	// font-family: 'Playfair', sans-serif;
+	font-family: 'Poppins', sans-serif;
+}
+
+a:visited, a:link, a:hover, a:active {
+	color: unset;
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+// $accent-color: #c800ff85;
+$accent-color:		hsl(251, 45%, 55%);
+$accent-shadow-1:	hsl(276, 100%, 74%);
+$accent-shadow-2:	#aa05c7;
+$accent-shadow-3:	hsl(325, 95%, 40%);
+$accent-shadow-4:	hsl(251, 95%, 40%);
+$accent-gradient:	linear-gradient(to right, hsl(201, 95%, 40%), hsl(291, 95%, 40%));
+
+// $font-family-hero: "Playfair";
+$font-family-hero: "Poppins";
+// $font-family-logo: "Luckiest Guy";
+$font-family-logo: "Poppins";
+
+.accent {
+	color: $accent-color!important;
+}

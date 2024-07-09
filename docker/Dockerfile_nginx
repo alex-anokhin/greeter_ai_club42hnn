@@ -1,6 +1,0 @@
-# Используем базовый образ nginx
-FROM nginx:alpine
-
-WORKDIR /usr/share/nginx/html
-# Заменяем конфигурацию nginx нашим собственным
-COPY nginx/nginx.conf /etc/nginx/nginx.conf

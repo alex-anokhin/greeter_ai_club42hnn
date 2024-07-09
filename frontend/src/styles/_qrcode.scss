@@ -1,0 +1,22 @@
+.qr-code-wrapper {
+
+	.qr-code {
+		margin-top: 2rem;
+		width: 20rem;
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.qr-code-animation {
+		opacity: 1;
+		// animation: qr-code-show-up 1s ease-in alternate;
+	}
+
+	.short-link {
+		text-align: center;
+		font-size: 1.4rem;
+		color: #aa05c7;
+		opacity: 0.8;
+		transform: translateY(-2rem);
+	}
+}

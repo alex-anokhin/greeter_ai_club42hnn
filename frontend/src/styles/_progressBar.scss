@@ -1,0 +1,27 @@
+.progressBar {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border: none;
+	background: transparent;
+	accent-color: hsl(291, 95%, 60%);
+	z-index: 5;
+	transition: all 0.8s ease-in-out;
+	filter: drop-shadow(0px 0px 5px $accent-shadow-1);
+
+	-webkit-appearance: none;
+
+	height: 0.6rem;
+
+	&::-webkit-progress-bar {
+		// background: rgba(255, 255, 255, 0.20);
+		background: transparent;
+	}
+	&::-webkit-progress-value {
+		background: hsl(291, 95%, 50%);
+	}
+
+	&::-moz-progress-bar {
+		background: hsl(291, 95%, 50%);
+	}
+}

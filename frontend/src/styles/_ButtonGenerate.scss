@@ -1,0 +1,39 @@
+.button-generate {
+	font-family: "Poppins", sans-serif;
+	font-size: 1.75rem;
+	font-weight: 500;
+	padding: 1rem 2rem;
+	background: linear-gradient(to right, hsl(201, 95%, 50%), hsl(291, 95%, 50%));
+	color: #fff;
+	border: none;
+	border-radius: .75rem;
+	cursor: pointer;
+	box-shadow: 0 .5rem 1rem hsla(221, 75%, 50%, 0.1);
+	transition: background-color, box-shadow 0.3s ease;
+	min-width: 20.5rem;
+	opacity: 1.0;
+	transition: opacity 0.5s;
+
+	&:hover,
+	&:focus {
+		box-shadow: 0 .5rem 1rem hsla(221, 75%, 50%, 0.5);
+	}
+	&:active {
+		background: linear-gradient(to right, hsl(201, 95%, 40%), hsl(291, 95%, 40%));
+		box-shadow: 0 .5rem 1rem hsla(221, 75%, 50%, 0.5);
+	}
+
+	svg {
+		animation: spin 1.8s ease infinite;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.4;
+	}
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}

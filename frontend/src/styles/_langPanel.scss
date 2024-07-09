@@ -1,0 +1,43 @@
+.lang-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  // margin-top: 2rem;
+}
+
+.button-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Позволяет кнопкам переноситься на следующую строку при необходимости */
+  width: 100%;
+  gap: 5px; /* Добавляет отступы между кнопками */
+}
+
+.lang-button {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  transition: background-color .3s;
+  border-radius: 4px; /* Скругленные углы кнопок */
+  padding: 0.5rem 1rem; /* Увеличенные отступы для улучшения внешнего вида */
+}
+
+.lang-button.active {
+  background-color: hsl(251, 45%, 55%);
+  font-weight: 500;
+  color: #fff;
+}
+
+h2 {
+  margin: 0;
+  // font-size: 16px;
+  text-align: center;
+}
