@@ -104,16 +104,20 @@ to stop the server press ^C (ctrl + C)
 
 ## Credits
 
-Lip_Wise & wav2lip
-llama3
-aya
-tts
-42Heilbronn
-our AI club team:
-olanokhi
-smoroz
-vmamonten
-mnaumann
-wdegraf
-aoprea
-pdietric
+- Lipsync
+    - Lip_Wise & wav2lip
+- LLMs
+    - llama3
+    - aya
+- text2speech
+    - tts
+- server with NVIDIA GPU
+    - 42Heilbronn
+- AI club dev team:
+    - olanokhi
+    - smoroz
+    - vmamonten
+    - mnaumann
+    - wdegraf
+    - aoprea
+    - pdietric
