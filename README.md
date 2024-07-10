@@ -75,6 +75,7 @@ Now you can go to http://localhost:8084 and see if success:
     ```
 	cd Lip_Wise/
     conda create -n greeterai_lw_p311 python=3.11 -y && conda activate greeterai_lw_p311
+    conda install ffmpeg
     pip install -r requirements.txt
     cd basicsr
     nano __init__.py
@@ -116,7 +117,7 @@ to stop the server press ^C (ctrl + C)
 - AI club dev team:
     - olanokhi
     - smoroz
-    - vmamonten
+    - vmamoten
     - mnaumann
     - wdegraf
     - aoprea
